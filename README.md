@@ -30,6 +30,3 @@ For the google authentication you need to;
  - `users` is a list of all unique usernames in `AttendanceRecords`
  - `tallied` shows the hours spent in voice chat; all time total per user, and per user per day
  - In the premade sheets I recommend only touching the dates on `tallied!A3:A` to be appropriate for your usecase. And making new sheets if you want to make graphs or transformations.
-
-### Limitations
- - I hate timezones, everything is in UTC+00:00

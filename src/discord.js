@@ -16,13 +16,21 @@ export function voiceLeaveEvent(onLeave) {
         if (!username) { console.error("no username", newState, oldState); return; }
 
         if (state[username]) {
-            onLeave(username, state[username].channelName, state[username].start, new Date());
+            onLeave(username, state[username].channelName, state[username].start, getLocalDate(new Date()));
         }
         const newChannelName = newState.channel?.name;
         if (newChannelName) { // if join channel
-            state[username] = { channelName: newChannelName, start: new Date() };
+            state[username] = { channelName: newChannelName, start: getLocalDate(new Date()) };
         } else {
             delete state[username];
         }
     });
+}
+
+function getLocalDate(date) {
+    const d = new Date(date);
+    const offset = d.getTimezoneOffset() / 60;
+    const hours = d.getHours();
+    d.setHours(hours - offset);
+    return d;
 }
